@@ -186,23 +186,25 @@ const Temp3Items = () => {
           </Link>
         </div>
       </nav>
-      <div className="banner">
-        {
-          <Link
-          to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-        >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-            alt="ar"
-          />
-          </Link>
-          // <img src={img1} alt="ar" />
-        }
-      </div>
+      {
+      // <div className="banner">
+      //   {
+      //     <Link
+      //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //   >
+      //     <img
+      //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //       alt="ar"
+      //     />
+      //     </Link>
+      //     // <img src={img1} alt="ar" />
+      //   }
+      // </div>
+      }
 
       <div className="d-flex flex-column align-items-center justify-content-center">
         <div className="template3_items">
-          {items.map((item) => {
+          {items.concat(items).concat(items).concat(items).map((item) => {
             return (
               <>
                 <div

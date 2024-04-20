@@ -247,8 +247,8 @@ const SubCatTemp2 = () => {
           </div>
 
           <div className="right">
-            <div className="categories">
-              <Slider {...settings}>
+            <div className="categories" style={{gap:'0px'}} >
+              <Slider {...settings} style={{width:'calc(100% - 50px)', padding:'0px'}}>
                 {subCat.length >= 1 ? (
                   subCat.map((sub) => {
                     return (
@@ -256,11 +256,11 @@ const SubCatTemp2 = () => {
                         to={`/${username}/template/2/category/${id}/sub-category/${sub.id}`}
                         key={sub.id}
                       >
-                        <div className="category mb-2">
+                        <div className="category mb-2 mx-2">
                           <img
                             src={`https://menurating-back.levantsy.com/storage${sub.image_url}`}
                             alt="category"
-                            className="template2 ml-0 mr-0 p-0"
+                            className="template2 ml-0 mr-0 p-0 w-100 h-100"
                           />
                           <p className="template2_paragraph">{sub.name}</p>
                         </div>

@@ -188,23 +188,25 @@ const Temp4Items = () => {
           </Link>
         </div>
       </nav>
-      <div className="banner">
-        {
-          <Link
-            to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-          >
-            <img
-              src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-              alt="ar"
-            />
-          </Link>
-          // <img src={img1} alt="ar" />
-        }
-      </div>
+      {
+      // <div className="banner">
+      //   {
+      //     <Link
+      //       to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //     >
+      //       <img
+      //         src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //         alt="ar"
+      //       />
+      //     </Link>
+      //     // <img src={img1} alt="ar" />
+      //   }
+      // </div>
+      }
 
       <div
         className="bottom_section_temp4"
-        style={{ minHeight: "calc(100vh - 320px)" }}
+        style={{ minHeight: "calc(100vh - 70px)" }}
       >
         {
           // <div

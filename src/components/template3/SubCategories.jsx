@@ -172,26 +172,28 @@ const SubCategories = () => {
           </Link>
         </div>
       </nav>
-      <div className="banner">
-        {
-          <Link
-          to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-        >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-            alt="ar"
-          />
-          </Link>
-          // <img src={img1} alt="ar" />
-        }
-      </div>
+      {      
+      // <div className="banner">
+      //   {
+      //     <Link
+      //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //   >
+      //     <img
+      //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //       alt="ar"
+      //     />
+      //     </Link>
+      //     // <img src={img1} alt="ar" />
+      //   }
+      // </div>
+      }
 
       <div className="pagin_tem3 d-flex flex-column align-items-center justify-content-center">
         <div className="template3_items">
-          {subCat.map((sub) => {
+          {subCat.concat(subCat).concat(subCat).concat(subCat).concat(subCat).concat(subCat).map((sub) => {
             return (
               <div
-                className="template3_item"
+                className="template3_item "
                 style={{ backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
                 key={sub.id}
                 onClick={() => handleClick(sub.id)}
@@ -199,6 +201,7 @@ const SubCategories = () => {
                 <img
                   src={`https://menurating-back.levantsy.com/storage${sub.image_url}`}
                   alt=""
+                  className="template3_S_U_b_item"
                 />
                 <h5 className="mt-5 text-dark font-weight-bold">{sub.name}</h5>
               </div>

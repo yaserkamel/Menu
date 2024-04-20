@@ -181,19 +181,23 @@ const SubCatTemp4 = () => {
           </Link>
         </div>
       </nav>
-      <div className="banner">
-        {
-          <Link
-          to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-        >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-            alt="ar"
-          />
-          </Link>
-          // <img src={img1} alt="ar" />
-        }
-      </div>
+      {
+
+      
+      // <div className="banner">
+      //   {
+      //     <Link
+      //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //   >
+      //     <img
+      //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //       alt="ar"
+      //     />
+      //     </Link>
+      //     // <img src={img1} alt="ar" />
+      //   }
+      // </div>
+      }
 
       <div
         className="bottom_section_temp4"
@@ -237,7 +241,7 @@ const SubCatTemp4 = () => {
                   src={`https://menurating-back.levantsy.com/storage${sub.image_url}`}
                   alt=""
                 />
-                <h5 className="text-white">{sub.name}</h5>
+                <h5 className="text-white text-break text-center p-2">{sub.name}</h5>
               </div>
             );
           })}

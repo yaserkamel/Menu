@@ -163,7 +163,7 @@ const CategoriesTemp5 = () => {
               // <img src={rec1} alt="" />
             }
           </div>
-          <div className="px-2">
+          <div className="">
             {
               <CatContainer />
             }
