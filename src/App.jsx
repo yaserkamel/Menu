@@ -22,6 +22,7 @@ import SubCategoriesTemp5 from "./components/template5/SubCategoriesTemp5";
 import Temp5Items from "./components/template5/Temp5Items";
 import SubCatTemp2 from "./components/template2/SubCatTemp2";
 import Test from "./components/Test";
+import FirstHomePage from "./components/template1/FirstHomePage";
 
 function App() {
   const { adminDetails } = useContext(AdminContext);
@@ -39,14 +40,17 @@ function App() {
         <Routes>
         {
           // <Route index  element={<Test />} /> 
+          <Route  path="/:username/rating" element={<Ratings />} /> 
         }
-          <Route  path="/:username" element={<Ratings />} /> 
+          <Route  path="/:username" element={<FirstHomePage />} /> 
         
           <Route path="/:username/template/1/home" element={<HomePage />} />
           <Route path="/:username/template/1/category/:id" element={<List />} />
           
-          <Route path="/:username/template/2/home" element={<HomePage2 />} />
-          <Route path="/:username/template/2/categories" element={<Categories />} />
+          {
+            // <Route path="/:username/template/2/home" element={<HomePage2 />} />
+          }
+          <Route path="/:username/template/2/home" element={<Categories />} />
           <Route path="/:username/template/2/category/:id" element={<SubCatTemp2 />} />
           <Route path="/:username/template/2/category/:id/sub-category/:id2" element={<Items />} />
 
@@ -58,9 +62,10 @@ function App() {
           <Route path="/:username/template/4/home" element={<Home4 />} />
           <Route path="/:username/template/4/category/:id" element={<SubCatTemp4 />} />
           <Route path="/:username/template/4/category/:id/sub-category/:id2" element={<Temp4Items/>} />
-          
-          <Route path="/:username/template/5/home" element={<HomeTemp5 />} />
-          <Route path="/:username/template/5/categories" element={<CategoriesTemp5 />} />
+          {
+            // <Route path="/:username/template/5/home" element={<HomeTemp5 />} />
+          }
+          <Route path="/:username/template/5/home" element={<CategoriesTemp5 />} />
           <Route path="/:username/template/5/category/:id" element={<SubCategoriesTemp5 />} />
           <Route path="/:username/template/5/category/:id/sub-category/:id2" element={<Temp5Items/>} />
         </Routes>

@@ -30,6 +30,11 @@ import { CategoriesContext } from "../../context/CategoriesProvider";
 import { LanguageContext } from "../../context/LanguageProvider";
 import WhatssappIcon from "../utility/WhatssappIcon";
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Cover from "./Cover";
+
 export default function HomePage() {
   const [showModal, setShowModal] = useState(false);
   const { adminDetails, updateUsername } = useContext(AdminContext);
@@ -94,19 +99,36 @@ export default function HomePage() {
     }
     setTimeout(() => {
       if (Object.keys(adminDetails).length > 0) {
-      getProduct(searchWord);
+        getProduct(searchWord);
       }
     }, 1000);
   }, [searchWord, adminDetails]);
 
-  // console.log(adminDetails.color);
+  console.log(adminDetails);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // slidesToShow: advertisments?.length < 3 ? 2 : advertisments?.length < 4 ? advertisments?.length : 4,
+    // slidesToScroll: advertisments?.length < 3 ? 2 : advertisments?.length < 4 ? advertisments?.length : 4,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    waitForAnimate: true,
+    adaptiveHeight: true,
+    rtl: language === "en" ? false : true,
+  };
 
   return (
     <div style={{ height: "100vh" }}>
       <nav
         className="nav_bar_menu px-3"
         style={{
-          backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}`,
+          backgroundColor: `#${
+            adminDetails.color && adminDetails?.color.substring(10, 16)
+          }`,
           flexDirection: language === "en" ? "row-reverse" : "row",
         }}
       >
@@ -120,33 +142,33 @@ export default function HomePage() {
             </Dropdown.Toggle>
             <Dropdown.Menu
               className="drop_down"
-              style={{ backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+              style={{
+                backgroundColor: `#${
+                  adminDetails.color && adminDetails?.color.substring(10, 16)
+                }`,
+              }}
             >
-            {
-              adminDetails?.facebook_url && (
+              {adminDetails?.facebook_url && (
                 <Dropdown.Item
-                href={adminDetails?.facebook_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={facebook} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-            {
-              adminDetails?.instagram_url && (
+                  href={adminDetails?.facebook_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={facebook} alt="" />
+                </Dropdown.Item>
+              )}
+
+              {adminDetails?.instagram_url && (
                 <Dropdown.Item
-                href={adminDetails?.instagram_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={insta} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-              <WhatssappIcon link={adminDetails.whatsapp_phone}/>
+                  href={adminDetails?.instagram_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={insta} alt="" />
+                </Dropdown.Item>
+              )}
+
+              <WhatssappIcon link={adminDetails.whatsapp_phone} />
               <Dropdown.Item
                 href=""
                 target="_blank"
@@ -168,9 +190,7 @@ export default function HomePage() {
         </div>
 
         <div to="" className="nav_bar_menu_right">
-          <Link
-            to={`/${username}`}
-          >
+          <Link to={`/${username}`}>
             <img
               src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
               alt="logo"
@@ -178,19 +198,51 @@ export default function HomePage() {
           </Link>
         </div>
       </nav>
-      <div className="banner">
-        {
-          <Link
-            to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-          >
-            <img
-              src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-              alt="ar"
-            />
-          </Link>
-          // <img src={img1} alt="ar" />
-        }
-      </div>
+      {
+        <Cover />
+        // <Slider {...settings}>
+        //   <div className="banner">
+        //     {
+        //       <Link
+        //         to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //       >
+        //         <img
+        //           src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //           alt="ar"
+        //         />
+        //       </Link>
+        //       // <img src={img1} alt="ar" />
+        //     }
+        //   </div>
+        //   {adminDetails?.is_rate === 1 && (
+        //     <Link
+        //       to={`/${adminDetails.name}`}
+        //       className="banner_rating flex-column"
+        //     >
+        //     <div>
+        //       <h3>Rate Us</h3>
+        //     </div>
+        //     <div className="rating_flex">
+        //     <img
+        //     src={`https://menurating-back.levantsy.com/storage${adminDetails?.bad_image}`}
+        //     alt=""
+        //     width={50}
+        //   />
+        //   <img
+        //     src={`https://menurating-back.levantsy.com/storage${adminDetails?.good_image}`}
+        //     alt=""
+        //     width={50}
+        //   />
+        //   <img
+        //     src={`https://menurating-back.levantsy.com/storage${adminDetails?.perfect_image}`}
+        //     alt=""
+        //     width={50}
+        //   /></div>
+
+        //     </Link>
+        //   )}
+        // </Slider>
+      }
 
       {
         // <div className="social_links">
@@ -228,7 +280,7 @@ export default function HomePage() {
             lang="ar"
             placeholder=""
             className="form-search"
-            style={{textAlign: language === 'en' ? '' : 'right'}}
+            style={{ textAlign: language === "en" ? "" : "right" }}
           />
         </Form>
       </Modal>

@@ -25,7 +25,8 @@ const Temp4Items = () => {
     useContext(CategoriesContext);
   const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(null);
-  const pageCountItems = useRef();
+  const [pageCountItems, setPageCountItems] = useState('');
+  // const pageCountItems = useRef();
   const { id, id2 } = useParams();
   const handleClose = () => setShowModal(null);
   const handleShow = (item) => setShowModal(item);
@@ -68,7 +69,8 @@ const Temp4Items = () => {
           config
         );
         console.log(response.data.data);
-        pageCountItems.current = response.data.last_page;
+        // pageCountItems.current = response.data.last_page;
+        setPageCountItems(response.data.last_page);
         setItems(response.data.data);
       } catch (error) {
         console.error(error);
@@ -92,6 +94,7 @@ const Temp4Items = () => {
         );
         console.log(response);
         setItems(response.data.data);
+        setPageCountItems(response.data.last_page);
       } catch (e) {
         console.log(e);
       }
@@ -115,7 +118,10 @@ const Temp4Items = () => {
     );
     // console.log(response.data.data);
     setItems(response.data.data);
+    setPageCountItems(response.data.last_page);
   };
+
+  console.log(pageCountItems)
 
   return (
     <div style={{ minHeight: "100vh" }}>
@@ -230,7 +236,7 @@ const Temp4Items = () => {
           //   </div>
         }
         <div className="right_section_temp4 w-100">
-          <div className="d-flex flex-column align-items-center justify-content-center">
+          <div className="d-flex flex-column align-items-center justify-content-center mb-5">
             <div className="items_temp4 ">
               {items.map((item) => {
                 return (
@@ -287,9 +293,9 @@ const Temp4Items = () => {
               })}
             </div>
 
-            {pageCountItems.current > 1 ? (
+            {pageCountItems > 1 ? (
               <Pagination
-                pageCount={pageCountItems.current}
+                pageCount={pageCountItems}
                 onPress={onPress}
               />
             ) : null}
@@ -332,13 +338,13 @@ const Temp4Items = () => {
                   : `/${username}/template/4/category/${cat.id}/sub-category/0`
               }`}
               key={cat.id}
-              className="d-flex flex-column align-items-center"
+              className="d-flex flex-column align-items-center justify-content-center"
             >
               <img
                 src={`https://menurating-back.levantsy.com/storage${cat.image_url}`}
                 alt=""
               />
-              <p className="text-capitalize text-dark">{cat.name}</p>
+              <p className="text-capitalize text-dark text-truncate">{cat.name}</p>
             </Link>
           );
         })}

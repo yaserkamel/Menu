@@ -1,23 +1,23 @@
+import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import ReactPaginate from "react-paginate";
-
-
 
 const Pagination = ({ pageCount, onPress }) => {
   const handlePageClick = (data) => {
     onPress(data.selected + 1);
   };
-  
 
   return (
     <ReactPaginate
-      breakLabel=""
-      nextLabel='🡪'
+      breakLabel="..."
+      nextLabel={<GrLinkNext />}
       onPageChange={handlePageClick}
-      marginPagesDisplayed={0}
-      pageRangeDisplayed={0}
+      // marginPagesDisplayed={1}
+      // pageRangeDisplayed={1}
       pageCount={pageCount}
-      previousLabel="🡨"
-      containerClassName={"pagination justify-content-center align-items-center mt-5"}
+      previousLabel={<GrLinkPrevious />}
+      containerClassName={
+        "pagination justify-content-center align-items-center mt-5"
+      }
       pageClassName={"page-item"}
       pageLinkClassName={"page-link"}
       previousClassName={"page-item"}

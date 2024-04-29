@@ -295,7 +295,7 @@ function Ratings() {
               <h3>Description</h3>
               <p>{adminDetails?.description}</p>
               <h3>Rate your experience :</h3>
-              <div className="d-flex justify-content-center align-items-center">
+              <div className="d-flex justify-content-center align-items-center w-75 w-lg-50">
                 <img
                   src={`https://menurating-back.levantsy.com/storage${adminDetails?.bad_image}`}
                   alt=""
@@ -352,7 +352,7 @@ function Ratings() {
                     alt=""
                     className=""
                   />
-                  <p>{adminDetails?.message_bad}</p>
+                  <p className="text-center">{adminDetails?.message_bad}</p>
                   </>
                 ) : selectImg === 2 ? (
                   <>
@@ -361,7 +361,7 @@ function Ratings() {
                     alt=""
                     className=""
                   />
-                  <p>{adminDetails?.message_good}</p>
+                  <p className="text-center">{adminDetails?.message_good}</p>
 
                   </>
                 ) : selectImg === 3 ? (
@@ -371,7 +371,7 @@ function Ratings() {
                     alt=""
                     className=""
                   />
-                  <p>{adminDetails?.message_perfect}</p>
+                  <p className="text-center">{adminDetails?.message_perfect}</p>
 
                   </>
                 ) : (

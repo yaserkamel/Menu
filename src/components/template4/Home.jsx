@@ -18,6 +18,7 @@ import { LanguageContext } from "../../context/LanguageProvider";
 // import whatss from '../../assets/pngwing.com (1).png'
 // import { FaWhatsapp } from "react-icons/fa"
 import WhatssappIcon from "../utility/WhatssappIcon";
+import Cover from "../template1/Cover";
 
 const Home = () => {
   const { adminDetails, updateUsername } = useContext(AdminContext);
@@ -68,7 +69,9 @@ const Home = () => {
       <nav
         className="nav_bar_menu px-3"
         style={{
-          backgroundColor: `#${adminDetails.color && adminDetails.color.substring(10,16)}`,
+          backgroundColor: `#${
+            adminDetails.color && adminDetails.color.substring(10, 16)
+          }`,
           flexDirection: language === "en" ? "row-reverse" : "row",
         }}
       >
@@ -84,31 +87,33 @@ const Home = () => {
             </Dropdown.Toggle>
             <Dropdown.Menu
               className="drop_down"
-              style={{ backgroundColor: `#${adminDetails.color &&  adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+              style={{
+                backgroundColor: `#${
+                  adminDetails.color &&
+                  adminDetails.color &&
+                  adminDetails?.color.substring(10, 16)
+                }`,
+              }}
             >
-            {
-              adminDetails?.facebook_url && (
+              {adminDetails?.facebook_url && (
                 <Dropdown.Item
-                href={adminDetails?.facebook_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={facebook} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-            {
-              adminDetails?.instagram_url && (
+                  href={adminDetails?.facebook_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={facebook} alt="" />
+                </Dropdown.Item>
+              )}
+
+              {adminDetails?.instagram_url && (
                 <Dropdown.Item
-                href={adminDetails?.instagram_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={insta} alt="" className="" />
-              </Dropdown.Item>
-              )
-            }
+                  href={adminDetails?.instagram_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={insta} alt="" className="" />
+                </Dropdown.Item>
+              )}
               <WhatssappIcon link={adminDetails.whatsapp_phone} />
               <Dropdown.Item
                 href=""
@@ -131,9 +136,7 @@ const Home = () => {
         </div>
 
         <div className="nav_bar_menu_right">
-          <Link
-          to={`/${username}`}
-          >
+          <Link to={`/${username}`}>
             <img
               src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
               alt="logo"
@@ -141,20 +144,23 @@ const Home = () => {
           </Link>
         </div>
       </nav>
-      <div className="banner">
-        {
-          <Link
-            to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-          >
-            <img
-              src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-              alt="ar"
-            />
-          </Link>
-          // <img src={img1} alt="ar" />
-        }
-      </div>
 
+      {
+        <Cover />
+        // <div className="banner">
+        //   {
+        //     <Link
+        //       to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //     >
+        //       <img
+        //         src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //         alt="ar"
+        //       />
+        //     </Link>
+        //     // <img src={img1} alt="ar" />
+        //   }
+        // </div>
+      }
       <div
         className="bottom_section_temp4"
         style={{ flexDirection: language === "en" ? "row" : "row-reverse" }}
@@ -215,7 +221,6 @@ const Home = () => {
                 className="container-search"
                 onSubmit={(e) => e.preventDefault()}
               >
-                
                 <input
                   value={searchWord}
                   onChange={onChangeSearch}
@@ -223,7 +228,7 @@ const Home = () => {
                   lang="ar"
                   placeholder=""
                   className="form-search"
-                  style={{textAlign: language === 'en' ? '' : 'right'}}
+                  style={{ textAlign: language === "en" ? "" : "right" }}
                 />
               </Form>
             </Modal>

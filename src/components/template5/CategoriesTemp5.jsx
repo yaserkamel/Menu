@@ -21,6 +21,7 @@ import AdvTemp2 from "../template2/AdvTemp2";
 import axios from "axios";
 import { LanguageContext } from "../../context/LanguageProvider";
 import WhatssappIcon from "../utility/WhatssappIcon";
+import Cover from "../template1/Cover";
 // import searchIcon from "../../assets/_search outline.png";
 
 const CategoriesTemp5 = () => {
@@ -31,7 +32,7 @@ const CategoriesTemp5 = () => {
   const handleShow = () => setShowModal(true);
   const { categories, setCategories, pageCount } =
     useContext(CategoriesContext);
-    const { language, toggleLanguage } = useContext(LanguageContext);
+  const { language, toggleLanguage } = useContext(LanguageContext);
   const { username } = useParams();
   const handleUpdateUsername = () => {
     updateUsername(username);
@@ -63,7 +64,6 @@ const CategoriesTemp5 = () => {
     }
     setTimeout(() => {
       if (Object.keys(adminDetails).length > 0) {
-
         getProduct(searchWord);
       }
     }, 1000);
@@ -74,49 +74,59 @@ const CategoriesTemp5 = () => {
       <nav
         className="nav_bar_menu px-3"
         style={{
-          backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}`,
-          flexDirection: language === 'en' ? 'row-reverse' : 'row'
+          backgroundColor: `#${
+            adminDetails.color && adminDetails?.color.substring(10, 16)
+          }`,
+          flexDirection: language === "en" ? "row-reverse" : "row",
         }}
       >
-        <div className="nav_bar_menu_left"  style={{flexDirection:  language === 'en' ? 'row-reverse' : 'row'}}>
+        <div
+          className="nav_bar_menu_left"
+          style={{ flexDirection: language === "en" ? "row-reverse" : "row" }}
+        >
           <Dropdown>
             <Dropdown.Toggle variant="" id="dropdown-basic">
               <img src={vector} alt="" />
             </Dropdown.Toggle>
             <Dropdown.Menu
               className="drop_down"
-              style={{ backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+              style={{
+                backgroundColor: `#${
+                  adminDetails.color && adminDetails?.color.substring(10, 16)
+                }`,
+              }}
             >
-            {
-              adminDetails?.facebook_url && (
+              {adminDetails?.facebook_url && (
                 <Dropdown.Item
-                href={adminDetails?.facebook_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={facebook} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-            {
-              adminDetails?.instagram_url && (
+                  href={adminDetails?.facebook_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={facebook} alt="" />
+                </Dropdown.Item>
+              )}
+
+              {adminDetails?.instagram_url && (
                 <Dropdown.Item
-                href={adminDetails?.instagram_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={insta} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              <WhatssappIcon link={adminDetails.whatsapp_phone}/>
+                  href={adminDetails?.instagram_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={insta} alt="" />
+                </Dropdown.Item>
+              )}
+              <WhatssappIcon link={adminDetails.whatsapp_phone} />
               <Dropdown.Item
-                href=''
+                href=""
                 target="_blank"
                 className="dorp_down_item "
               >
-                <p className='bg-white rounded-circle mx-2 p-1' onClick={toggleLanguage}>{language === 'en' ? 'Ar' : 'En'}</p>
+                <p
+                  className="bg-white rounded-circle mx-2 p-1"
+                  onClick={toggleLanguage}
+                >
+                  {language === "en" ? "Ar" : "En"}
+                </p>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -124,36 +134,38 @@ const CategoriesTemp5 = () => {
           <Link to="">
             <img src={search} alt="" onClick={handleShow} />
           </Link>
-        
         </div>
 
         <div to="" className="nav_bar_menu_right">
-        <Link
-        to={`/${username}`}
-          >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
-            alt="logo"
-          />
+          <Link to={`/${username}`}>
+            <img
+              src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
+              alt="logo"
+            />
           </Link>
         </div>
       </nav>
-      <div className="banner">
-        {
-          <Link
-          to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-        >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-            alt="ar"
-          />
-          </Link>
-          // <img src={img1} alt="ar" />
-        }
-      </div>
 
-      <div className="bottom_section_temp4" style={{flexDirection:  language === 'en' ? 'row' : 'row-reverse'}}>
-        
+      {
+        <Cover />
+        // <div className="banner">
+        //   {
+        //     <Link
+        //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //   >
+        //     <img
+        //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //       alt="ar"
+        //     />
+        //     </Link>
+        //     // <img src={img1} alt="ar" />
+        //   }
+        // </div>
+      }
+      <div
+        className="bottom_section_temp4"
+        style={{ flexDirection: language === "en" ? "row" : "row-reverse" }}
+      >
         <div className="right_section_temp4">
           <div className="">
             {
@@ -163,11 +175,7 @@ const CategoriesTemp5 = () => {
               // <img src={rec1} alt="" />
             }
           </div>
-          <div className="">
-            {
-              <CatContainer />
-            }
-          </div>
+          <div className="">{<CatContainer />}</div>
           <Modal
             show={showModal}
             onHide={handleClose}
@@ -187,7 +195,7 @@ const CategoriesTemp5 = () => {
                 lang="ar"
                 placeholder=""
                 className="form-search"
-                style={{textAlign: language === 'en' ? '' : 'right'}}
+                style={{ textAlign: language === "en" ? "" : "right" }}
               />
             </Form>
           </Modal>

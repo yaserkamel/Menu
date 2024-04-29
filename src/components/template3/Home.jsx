@@ -14,6 +14,7 @@ import axios from "axios";
 import { CategoriesContext } from "../../context/CategoriesProvider";
 import { LanguageContext } from "../../context/LanguageProvider";
 import WhatssappIcon from "../utility/WhatssappIcon";
+import Cover from "../template1/Cover";
 
 const Home = () => {
   const { adminDetails ,updateUsername} = useContext(AdminContext);
@@ -132,19 +133,23 @@ const Home = () => {
           </Link>
         </div>
       </nav>
-      <div className="banner">
-        {
-          <Link
-          to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-        >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-            alt="ar"
-          />
-          </Link>
-          // <img src={img1} alt="ar" />
-        }
-      </div>
+      {
+
+      <Cover/>
+      // <div className="banner">
+      //   {
+      //     <Link
+      //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //   >
+      //     <img
+      //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //       alt="ar"
+      //     />
+      //     </Link>
+      //     // <img src={img1} alt="ar" />
+      //   }
+      // </div>
+      }
 
       <div className="">
         <AdvertismentSlider num={1}/>

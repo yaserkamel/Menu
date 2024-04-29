@@ -19,6 +19,7 @@ import insta from "../../assets/insta.png";
 import WhatssappIcon from "../utility/WhatssappIcon";
 import search from "../../assets/icon _search outline_.png";
 import { LanguageContext } from "../../context/LanguageProvider";
+import Cover from "../template1/Cover";
 
 const Categories = () => {
   const { adminDetails, updateUsername } = useContext(AdminContext);
@@ -74,7 +75,9 @@ const Categories = () => {
       <nav
         className="nav_bar_menu px-3"
         style={{
-          backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}`,
+          backgroundColor: `#${
+            adminDetails.color && adminDetails?.color.substring(10, 16)
+          }`,
           flexDirection: language === "en" ? "row-reverse" : "row",
         }}
       >
@@ -88,31 +91,31 @@ const Categories = () => {
             </Dropdown.Toggle>
             <Dropdown.Menu
               className="drop_down"
-              style={{ backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+              style={{
+                backgroundColor: `#${
+                  adminDetails.color && adminDetails?.color.substring(10, 16)
+                }`,
+              }}
             >
-            {
-              adminDetails?.facebook_url && (
+              {adminDetails?.facebook_url && (
                 <Dropdown.Item
-                href={adminDetails?.facebook_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={facebook} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-            {
-              adminDetails?.instagram_url && (
+                  href={adminDetails?.facebook_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={facebook} alt="" />
+                </Dropdown.Item>
+              )}
+
+              {adminDetails?.instagram_url && (
                 <Dropdown.Item
-                href={adminDetails?.instagram_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={insta} alt="" />
-              </Dropdown.Item>
-              )
-            }
+                  href={adminDetails?.instagram_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={insta} alt="" />
+                </Dropdown.Item>
+              )}
 
               <WhatssappIcon link={adminDetails.whatsapp_phone} />
               <Dropdown.Item
@@ -136,9 +139,7 @@ const Categories = () => {
         </div>
 
         <div to="" className="nav_bar_menu_right">
-          <Link
-          to={`/${username}`}
-          >
+          <Link to={`/${username}`}>
             <img
               src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
               alt="logo"
@@ -146,80 +147,88 @@ const Categories = () => {
           </Link>
         </div>
       </nav>
-      <div
-        className="banner"
-        style={{ width: "calc(100%)", marginLeft: "auto" }}
-      >
-        <Link to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}>
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-            alt=""
-            style={{ minWidth: "350px", minHeight: "200px" }}
-          />
-        </Link>
-        <div className="right pt-0">
-          <div className="mt-3 mb-0">
-            <AdvertismentSlider num={1} />
-            {
-              // <img src={rec3} alt="" />
-              // <img src={rec3} alt="" />
-              // <img src={rec3} alt="" />
-            }
-          </div>
 
-          <div className="offers px-2">
-            <CategoriesContainer username={username} />
+      {
 
-            {
-              //   <div className="offer">
-              //   <Link to="/template/2/category/:id" className="">
-              //     <img src={rec3} alt="" />
-              //     <p>Offer</p>
-              //   </Link>
-              // </div>
-              // <div className="offer">
-              //   <Link to="/template/2/category/:id" className="">
-              //     <img src={rec2} alt="" />
-              //     <p>Offer</p>
-              //   </Link>
-              // </div>
-              // <div className="offer">
-              //   <Link to="/template/2/category/:id" className="">
-              //     <img src={rec3} alt="" />
-              //     <p>Offer</p>
-              //   </Link>
-              // </div>
-              // <div className="offer">
-              //   <Link to="/template/2/category/:id" className="">
-              //     <img src={rec3} alt="" />
-              //     <p>Offer</p>
-              //   </Link>
-              // </div>
-            }
+        <Cover />
+      // <div
+      //   className="banner"
+      //   // style={{ width: "calc(100%)", marginLeft: "auto" }}
+      // >
+      //   <Link
+      //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //   >
+      //     <img
+      //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+      //       alt=""
+      //       style={{ minWidth: "350px", minHeight: "200px" }}
+      //     />
+      //   </Link>
+      // </div>
+      }
+      <div className="right pt-0">
+        <div className="mt-3 mb-0">
+          <AdvertismentSlider num={1} />
+          {
+            // <img src={rec3} alt="" />
+            // <img src={rec3} alt="" />
+            // <img src={rec3} alt="" />
+          }
+        </div>
 
-            <Modal
-              show={showModal}
-              onHide={handleClose}
-              className="searchModal p-0 "
+        <div className="offers px-0">
+          <CategoriesContainer username={username} />
+
+          {
+            //   <div className="offer">
+            //   <Link to="/template/2/category/:id" className="">
+            //     <img src={rec3} alt="" />
+            //     <p>Offer</p>
+            //   </Link>
+            // </div>
+            // <div className="offer">
+            //   <Link to="/template/2/category/:id" className="">
+            //     <img src={rec2} alt="" />
+            //     <p>Offer</p>
+            //   </Link>
+            // </div>
+            // <div className="offer">
+            //   <Link to="/template/2/category/:id" className="">
+            //     <img src={rec3} alt="" />
+            //     <p>Offer</p>
+            //   </Link>
+            // </div>
+            // <div className="offer">
+            //   <Link to="/template/2/category/:id" className="">
+            //     <img src={rec3} alt="" />
+            //     <p>Offer</p>
+            //   </Link>
+            // </div>
+          }
+
+          <Modal
+            show={showModal}
+            onHide={handleClose}
+            className="searchModal p-0 "
+          >
+            <Form
+              className="container-search"
+              onSubmit={(e) => e.preventDefault()}
             >
-              <Form
-                className="container-search"
-                onSubmit={(e) => e.preventDefault()}
-              >
-                <input
-                  value={searchWord}
-                  onChange={onChangeSearch}
-                  type=""
-                  placeholder=""
-                  className="form-search"
-                  style={{textAlign: language === 'en' ? '' : 'right'}}
-                />
-              </Form>
-            </Modal>
-          </div>
+              <input
+                value={searchWord}
+                onChange={onChangeSearch}
+                type=""
+                placeholder=""
+                className="form-search"
+                style={{ textAlign: language === "en" ? "" : "right" }}
+              />
+            </Form>
+          </Modal>
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 
