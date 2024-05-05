@@ -17,10 +17,14 @@ import vector from "../../assets/Vector.png";
 import searchIcon from "../../assets/_search outline.png";
 import { LanguageContext } from "../../context/LanguageProvider";
 import WhatssappIcon from "../utility/WhatssappIcon";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { FaFacebookF } from "react-icons/fa";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const Temp4Items = () => {
   const { adminDetails, updateUsername } = useContext(AdminContext);
-
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const { categories, setCategories, pageCount } =
     useContext(CategoriesContext);
   const [items, setItems] = useState([]);
@@ -150,7 +154,14 @@ const Temp4Items = () => {
                   target="_blank"
                   className="dorp_down_item"
                 >
-                  <img src={facebook} alt="" />
+                <FaFacebookF
+                color="white"
+                style={{
+                  width: "25px",
+                  height: "25px",
+                  borderRadius: "50%",
+                }}
+              />
                 </Dropdown.Item>
               )}
 
@@ -160,7 +171,15 @@ const Temp4Items = () => {
                   target="_blank"
                   className="dorp_down_item"
                 >
-                  <img src={insta} alt="" />
+                <AiOutlineInstagram
+                className=""
+                color="white"
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                }}
+              />
                 </Dropdown.Item>
               )}
 
@@ -329,7 +348,7 @@ const Temp4Items = () => {
           flexDirection: language === "en" ? "row" : "row-reverse",
         }}
       >
-        {categories?.slice(0, 3).map((cat) => {
+        {categories?.slice(0, isSmallDevice ? 3 : 7).map((cat) => {
           return (
             <Link
               to={`${
@@ -344,13 +363,13 @@ const Temp4Items = () => {
                 src={`https://menurating-back.levantsy.com/storage${cat.image_url}`}
                 alt=""
               />
-              <p className="text-capitalize text-dark text-truncate">{cat.name}</p>
+              <p className="text-capitalize text-white text-truncate text-center">{cat.name}</p>
             </Link>
           );
         })}
         <Link to={`/${username}/template/4/home`} className="align-self-end">
           {" "}
-          <p className="text-capitalize text-dark">
+          <p className="text-capitalize text-white text-center">
             {language === "en" ? "More..." : "...المزيد"}
           </p>
         </Link>

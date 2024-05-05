@@ -162,44 +162,37 @@ const CategoriesTemp5 = () => {
         //   }
         // </div>
       }
-      <div
-        className="bottom_section_temp4"
-        style={{ flexDirection: language === "en" ? "row" : "row-reverse" }}
-      >
-        <div className="right_section_temp4">
-          <div className="">
-            {
-              <AdvTemp2 num={1} />
-              // <img src={rec1} alt="" />
-              // <img src={rec1} alt="" />
-              // <img src={rec1} alt="" />
-            }
-          </div>
-          <div className="">{<CatContainer />}</div>
-          <Modal
-            show={showModal}
-            onHide={handleClose}
-            className="searchModal p-0"
-          >
-            <Form
-              className="container-search"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              {
-                // <img src={searchIcon} alt="searchIcon" className="searchIcon" />
-              }
-              <input
-                value={searchWord}
-                onChange={onChangeSearch}
-                type=""
-                lang="ar"
-                placeholder=""
-                className="form-search"
-                style={{ textAlign: language === "en" ? "" : "right" }}
-              />
-            </Form>
-          </Modal>
+
+      <div className="right_section_temp4">
+        <div className="">
+          <AdvTemp2 num={1} />
         </div>
+        <div className="">
+          <CatContainer />
+        </div>
+        <Modal
+          show={showModal}
+          onHide={handleClose}
+          className="searchModal p-0"
+        >
+          <Form
+            className="container-search"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            {
+              // <img src={searchIcon} alt="searchIcon" className="searchIcon" />
+            }
+            <input
+              value={searchWord}
+              onChange={onChangeSearch}
+              type=""
+              lang="ar"
+              placeholder=""
+              className="form-search"
+              style={{ textAlign: language === "en" ? "" : "right" }}
+            />
+          </Form>
+        </Modal>
       </div>
     </div>
   );

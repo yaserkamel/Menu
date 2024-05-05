@@ -108,8 +108,8 @@ const SubCatTemp2 = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: subCat.length < 5 ? subCat.length : 5,
-    slidesToScroll: 5,
+    slidesToShow: subCat.length / 5,
+    slidesToScroll: subCat.length / 5,
     autoplay: false,
     autoplaySpeed: 2000,
     waitForAnimate: true,
@@ -118,15 +118,16 @@ const SubCatTemp2 = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: subCat.length / 4,
+          slidesToScroll: subCat.length / 4,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          rows: subCat.length < 3 ? 1 : subCat.length < 4 ? 2 : 3,
-          slidesToShow: 2,
+          rows: subCat.length / 2,
+          // rows: subCat.length < 3 ? 1 : subCat.length < 4 ? 2 : subCat.length / 2,
+          // slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
@@ -242,11 +243,11 @@ const SubCatTemp2 = () => {
                 </Link>
               );
             })}
-            <Link to={`/${username}/template/2/categories`}>
+            <Link to={`/${username}/template/2/home`}>
             <p className="text-capitalize">{language === 'en' ? 'More' : 'المزيد'}</p></Link>
           </div>
 
-          <div className="right">
+          <div className="right" style={{width:'calc(100% - 50px)'}}>
             <div className="categories" style={{gap:'0px'}} >
               <Slider {...settings} style={{width:'calc(100% - 50px)', padding:'0px'}}>
                 {subCat.length >= 1 ? (

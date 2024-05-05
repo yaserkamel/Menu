@@ -17,13 +17,15 @@ import WhatssappIcon from "../utility/WhatssappIcon";
 
 const SubCategories = () => {
   const [subCat, setSubCat] = useState([]);
+  const [error, setError] = useState(null);
+
   const { id } = useParams();
   const { adminDetails, updateUsername } = useContext(AdminContext);
   const [searchWord, setSearchWord] = useState("");
   const [showModal, setShowModal] = useState(false);
   const { categories, setCategories, pageCount } =
     useContext(CategoriesContext);
-    const { language, toggleLanguage } = useContext(LanguageContext);
+  const { language, toggleLanguage } = useContext(LanguageContext);
   const navigate = useNavigate();
   const { username } = useParams();
   const pageCountSub = useRef();
@@ -58,8 +60,11 @@ const SubCategories = () => {
         );
         console.log(response);
         setSubCat(response.data.data);
+        pageCountSub.current = response.data.last_page;
+        setError(null);
       } catch (e) {
-        console.log(e);
+        console.log();
+        setError(e.response);
       }
     }
     setTimeout(() => {
@@ -67,27 +72,27 @@ const SubCategories = () => {
     }, 1000);
   }, [searchWord, language]);
 
-  useEffect(() => {
-    async function getSubCat() {
-      try {
-        const config = {
-          headers: {
-            language: language,
-          },
-        };
-        const response = await axios.get(
-          `https://menurating-back.levantsy.com/user_api/show_master_categories?masterId=${id}`,
-          config
-        );
-        console.log(response.data.data);
-        pageCountSub.current = response.data.last_page;
-        setSubCat(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getSubCat();
-  }, []);
+  // useEffect(() => {
+  //   async function getSubCat() {
+  //     try {
+  //       const config = {
+  //         headers: {
+  //           language: language,
+  //         },
+  //       };
+  //       const response = await axios.get(
+  //         `https://menurating-back.levantsy.com/user_api/show_master_categories?masterId=${id}`,
+  //         config
+  //       );
+  //       console.log(response.data.data);
+  //       pageCountSub.current = response.data.last_page;
+  //       setSubCat(response.data.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   getSubCat();
+  // }, []);
 
   const onPress = async (page) => {
     const config = {
@@ -108,51 +113,61 @@ const SubCategories = () => {
       <nav
         className="nav_bar_menu px-3"
         style={{
-          backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}`,
-          flexDirection: language === 'en' ? 'row-reverse' : 'row'
+          backgroundColor: `#${
+            adminDetails.color && adminDetails?.color.substring(10, 16)
+          }`,
+          flexDirection: language === "en" ? "row-reverse" : "row",
         }}
       >
-        <div className="nav_bar_menu_left" style={{flexDirection:  language === 'en' ? 'row-reverse' : 'row'}}>
+        <div
+          className="nav_bar_menu_left"
+          style={{ flexDirection: language === "en" ? "row-reverse" : "row" }}
+        >
           <Dropdown>
             <Dropdown.Toggle variant="" id="dropdown-basic">
               <img src={vector} alt="" />
             </Dropdown.Toggle>
             <Dropdown.Menu
               className="drop_down"
-              style={{ backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+              style={{
+                backgroundColor: `#${
+                  adminDetails.color && adminDetails?.color.substring(10, 16)
+                }`,
+              }}
             >
-            {
-              adminDetails?.facebook_url && (
+              {adminDetails?.facebook_url && (
                 <Dropdown.Item
-                href={adminDetails?.facebook_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={facebook} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-            {
-              adminDetails?.instagram_url && (
+                  href={adminDetails?.facebook_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={facebook} alt="" />
+                </Dropdown.Item>
+              )}
+
+              {adminDetails?.instagram_url && (
                 <Dropdown.Item
-                href={adminDetails?.instagram_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={insta} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-              <WhatssappIcon link={adminDetails.whatsapp_phone}/>
+                  href={adminDetails?.instagram_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={insta} alt="" />
+                </Dropdown.Item>
+              )}
+
+              <WhatssappIcon link={adminDetails.whatsapp_phone} />
               <Dropdown.Item
-              href=''
-              target="_blank"
-              className="dorp_down_item "
-            >
-              <p className='bg-white rounded-circle mx-2 p-1' onClick={toggleLanguage}>{language === 'en' ? 'Ar' : 'En'}</p>
-            </Dropdown.Item>
+                href=""
+                target="_blank"
+                className="dorp_down_item "
+              >
+                <p
+                  className="bg-white rounded-circle mx-2 p-1"
+                  onClick={toggleLanguage}
+                >
+                  {language === "en" ? "Ar" : "En"}
+                </p>
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
@@ -162,51 +177,60 @@ const SubCategories = () => {
         </div>
 
         <div to="" className="nav_bar_menu_right">
-        <Link
-        to={`/${username}`}
-          >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
-            alt="logo"
-          />
+          <Link to={`/${username}`}>
+            <img
+              src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
+              alt="logo"
+            />
           </Link>
         </div>
       </nav>
-      {      
-      // <div className="banner">
-      //   {
-      //     <Link
-      //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-      //   >
-      //     <img
-      //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-      //       alt="ar"
-      //     />
-      //     </Link>
-      //     // <img src={img1} alt="ar" />
-      //   }
-      // </div>
+      {
+        // <div className="banner">
+        //   {
+        //     <Link
+        //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //   >
+        //     <img
+        //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //       alt="ar"
+        //     />
+        //     </Link>
+        //     // <img src={img1} alt="ar" />
+        //   }
+        // </div>
       }
 
       <div className="pagin_tem3 d-flex flex-column align-items-center justify-content-center">
         <div className="template3_items">
-          {subCat.concat(subCat).concat(subCat).concat(subCat).concat(subCat).concat(subCat).map((sub) => {
-            return (
-              <div
-                className="template3_item "
-                style={{ backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
-                key={sub.id}
-                onClick={() => handleClick(sub.id)}
-              >
-                <img
-                  src={`https://menurating-back.levantsy.com/storage${sub.image_url}`}
-                  alt=""
-                  className="template3_S_U_b_item"
-                />
-                <h5 className="mt-5 text-dark font-weight-bold">{sub.name}</h5>
-              </div>
-            );
-          })}
+          {error ? (
+            <p className="my-4 text-danger">{error.data.message}</p>
+          ) : (
+            subCat.map((sub) => {
+              return (
+                <div
+                  className="template3_item "
+                  style={{
+                    backgroundColor: `#${
+                      adminDetails.color &&
+                      adminDetails?.color.substring(10, 16)
+                    }`,
+                  }}
+                  key={sub.id}
+                  onClick={() => handleClick(sub.id)}
+                >
+                  <img
+                    src={`https://menurating-back.levantsy.com/storage${sub.image_url}`}
+                    alt=""
+                    className="template3_S_U_b_item"
+                  />
+                  <h5 className="mt-5 text-dark font-weight-bold">
+                    {sub.name}
+                  </h5>
+                </div>
+              );
+            })
+          )}
         </div>
         {pageCountSub.current > 1 ? (
           <div className="mb-2">
@@ -229,7 +253,7 @@ const SubCategories = () => {
               lang="ar"
               placeholder=""
               className="form-search"
-              style={{textAlign: language === 'en' ? '' : 'right'}}
+              style={{ textAlign: language === "en" ? "" : "right" }}
             />
           </Form>
         </Modal>

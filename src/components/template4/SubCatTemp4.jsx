@@ -16,13 +16,16 @@ import searchIcon from "../../assets/_search outline.png";
 import Pagination from "../template1/Pagination";
 import { LanguageContext } from "../../context/LanguageProvider";
 import WhatssappIcon from "../utility/WhatssappIcon";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { FaFacebookF } from "react-icons/fa";
 
 const SubCatTemp4 = () => {
   const { adminDetails, updateUsername } = useContext(AdminContext);
   const { categories, setCategories, pageCount } =
     useContext(CategoriesContext);
   const { language, toggleLanguage } = useContext(LanguageContext);
-
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const [subCat, setSubCat] = useState([]);
   const { id } = useParams();
   const { username } = useParams();
@@ -67,7 +70,7 @@ const SubCatTemp4 = () => {
     setTimeout(() => {
       getProduct(searchWord);
     }, 1000);
-  }, [searchWord, language,id]);
+  }, [searchWord, language, id]);
 
   useEffect(() => {
     async function getSubCat() {
@@ -110,7 +113,9 @@ const SubCatTemp4 = () => {
       <nav
         className="nav_bar_menu px-3"
         style={{
-          backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}`,
+          backgroundColor: `#${
+            adminDetails.color && adminDetails?.color.substring(10, 16)
+          }`,
           flexDirection: language === "en" ? "row-reverse" : "row",
         }}
       >
@@ -124,32 +129,47 @@ const SubCatTemp4 = () => {
             </Dropdown.Toggle>
             <Dropdown.Menu
               className="drop_down"
-              style={{ backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+              style={{
+                backgroundColor: `#${
+                  adminDetails.color && adminDetails?.color.substring(10, 16)
+                }`,
+              }}
             >
-            {
-              adminDetails?.facebook_url && (
+              {adminDetails?.facebook_url && (
                 <Dropdown.Item
-                href={adminDetails?.facebook_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={facebook} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-            {
-              adminDetails?.instagram_url && (
+                  href={adminDetails?.facebook_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <FaFacebookF
+                    color="white"
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      borderRadius: "50%",
+                    }}
+                  />
+                </Dropdown.Item>
+              )}
+
+              {adminDetails?.instagram_url && (
                 <Dropdown.Item
-                href={adminDetails?.instagram_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={insta} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              <WhatssappIcon link={adminDetails.whatsapp_phone}/>
+                  href={adminDetails?.instagram_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <AiOutlineInstagram
+                    className=""
+                    color="white"
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      borderRadius: "50%",
+                    }}
+                  />
+                </Dropdown.Item>
+              )}
+              <WhatssappIcon link={adminDetails.whatsapp_phone} />
               <Dropdown.Item
                 href=""
                 target="_blank"
@@ -171,32 +191,28 @@ const SubCatTemp4 = () => {
         </div>
 
         <div to="" className="nav_bar_menu_right">
-        <Link
-        to={`/${username}`}
-          >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
-            alt="logo"
-          />
+          <Link to={`/${username}`}>
+            <img
+              src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
+              alt="logo"
+            />
           </Link>
         </div>
       </nav>
       {
-
-      
-      // <div className="banner">
-      //   {
-      //     <Link
-      //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-      //   >
-      //     <img
-      //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-      //       alt="ar"
-      //     />
-      //     </Link>
-      //     // <img src={img1} alt="ar" />
-      //   }
-      // </div>
+        // <div className="banner">
+        //   {
+        //     <Link
+        //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //   >
+        //     <img
+        //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //       alt="ar"
+        //     />
+        //     </Link>
+        //     // <img src={img1} alt="ar" />
+        //   }
+        // </div>
       }
 
       <div
@@ -225,23 +241,26 @@ const SubCatTemp4 = () => {
           // </div>
         }
 
-        <div
-          className="offers_temp4"
-          style={{ paddingTop: "20px" }}
-        >
+        <div className="offers_temp4" style={{ paddingTop: "20px" }}>
           {subCat.map((sub) => {
             return (
               <div
                 className=" offer_temp4_sub"
                 key={sub.id}
                 onClick={() => handleClick(sub.id)}
-                style={{ background: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+                style={{
+                  background: `#${
+                    adminDetails.color && adminDetails?.color.substring(10, 16)
+                  }`,
+                }}
               >
                 <img
                   src={`https://menurating-back.levantsy.com/storage${sub.image_url}`}
                   alt=""
                 />
-                <h5 className="text-white text-break text-center p-2">{sub.name}</h5>
+                <h5 className="text-white text-break text-center p-2">
+                  {sub.name}
+                </h5>
               </div>
             );
           })}
@@ -263,16 +282,20 @@ const SubCatTemp4 = () => {
               lang="ar"
               placeholder=""
               className="form-search"
-              style={{textAlign: language === 'en' ? '' : 'right'}}
+              style={{ textAlign: language === "en" ? "" : "right" }}
             />
           </Form>
         </Modal>
       </div>
       <div
         className="bottom_section_categories_temp4"
-        style={{ background: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+        style={{
+          background: `#${
+            adminDetails.color && adminDetails?.color.substring(10, 16)
+          }`,
+        }}
       >
-        {categories?.slice(0, 3).map((cat) => {
+        {categories?.slice(0, isSmallDevice ? 3 : 7).map((cat) => {
           return (
             <Link
               to={`${
@@ -283,18 +306,19 @@ const SubCatTemp4 = () => {
               key={cat.id}
               className="d-flex flex-column align-items-center"
             >
-            <img
-            src={`https://menurating-back.levantsy.com/storage${cat.image_url}`}
-            alt=""
-          />
-              <p className="text-capitalize text-dark">{cat.name}</p>
+              <img
+                src={`https://menurating-back.levantsy.com/storage${cat.image_url}`}
+                alt=""
+              />
+              <p className="text-capitalize text-white text-center text-truncate">{cat.name}</p>
             </Link>
           );
         })}
         <Link to={`/${username}/template/4/home`} className="align-self-end">
           {" "}
-          <p className="text-capitalize text-dark ">{language === 'en' ? 'More...' : 'المزيد'}</p>
-          
+          <p className="text-capitalize text-white text-center">
+            {language === "en" ? "More..." : "المزيد"}
+          </p>
         </Link>
       </div>
       {pageCountSub.current > 1 ? (

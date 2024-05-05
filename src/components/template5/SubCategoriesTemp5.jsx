@@ -20,12 +20,11 @@ import { LanguageContext } from "../../context/LanguageProvider";
 import WhatssappIcon from "../utility/WhatssappIcon";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-
 const SubCategoriesTemp5 = () => {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
   const { adminDetails, updateUsername } = useContext(AdminContext);
   const { categories, setCategories, pageCount } =
-  useContext(CategoriesContext);
+    useContext(CategoriesContext);
   const { language, toggleLanguage } = useContext(LanguageContext);
 
   const [subCat, setSubCat] = useState([]);
@@ -107,56 +106,66 @@ const SubCategoriesTemp5 = () => {
     setTimeout(() => {
       getProduct(searchWord);
     }, 1000);
-  }, [searchWord , language, id]);
+  }, [searchWord, language, id]);
 
   return (
     <div style={{ minHeight: "100vh" }}>
       <nav
         className="nav_bar_menu px-3"
         style={{
-          backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}`,
-          flexDirection: language === 'en' ? 'row-reverse' : 'row'
+          backgroundColor: `#${
+            adminDetails.color && adminDetails?.color.substring(10, 16)
+          }`,
+          flexDirection: language === "en" ? "row-reverse" : "row",
         }}
       >
-        <div className="nav_bar_menu_left" style={{flexDirection:  language === 'en' ? 'row-reverse' : 'row'}}>
+        <div
+          className="nav_bar_menu_left"
+          style={{ flexDirection: language === "en" ? "row-reverse" : "row" }}
+        >
           <Dropdown>
             <Dropdown.Toggle variant="" id="dropdown-basic">
               <img src={vector} alt="" />
             </Dropdown.Toggle>
             <Dropdown.Menu
               className="drop_down"
-              style={{ backgroundColor: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+              style={{
+                backgroundColor: `#${
+                  adminDetails.color && adminDetails?.color.substring(10, 16)
+                }`,
+              }}
             >
-            {
-              adminDetails?.facebook_url && (
+              {adminDetails?.facebook_url && (
                 <Dropdown.Item
-                href={adminDetails?.facebook_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={facebook} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              
-            {
-              adminDetails?.instagram_url && (
+                  href={adminDetails?.facebook_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={facebook} alt="" />
+                </Dropdown.Item>
+              )}
+
+              {adminDetails?.instagram_url && (
                 <Dropdown.Item
-                href={adminDetails?.instagram_url}
-                target="_blank"
-                className="dorp_down_item"
-              >
-                <img src={insta} alt="" />
-              </Dropdown.Item>
-              )
-            }
-              <WhatssappIcon link={adminDetails.whatsapp_phone}/>
+                  href={adminDetails?.instagram_url}
+                  target="_blank"
+                  className="dorp_down_item"
+                >
+                  <img src={insta} alt="" />
+                </Dropdown.Item>
+              )}
+              <WhatssappIcon link={adminDetails.whatsapp_phone} />
               <Dropdown.Item
-                href=''
+                href=""
                 target="_blank"
                 className="dorp_down_item "
               >
-                <p className='bg-white rounded-circle mx-2 p-1' onClick={toggleLanguage}>{language === 'en' ? 'Ar' : 'En'}</p>
+                <p
+                  className="bg-white rounded-circle mx-2 p-1"
+                  onClick={toggleLanguage}
+                >
+                  {language === "en" ? "Ar" : "En"}
+                </p>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -167,44 +176,47 @@ const SubCategoriesTemp5 = () => {
         </div>
 
         <div to="" className="nav_bar_menu_right">
-        <Link
-        to={`/${username}`}
-          >
-          <img
-            src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
-            alt="logo"
-          />
+          <Link to={`/${username}`}>
+            <img
+              src={`https://menurating-back.levantsy.com/storage${adminDetails.logo}`}
+              alt="logo"
+            />
           </Link>
         </div>
       </nav>
       {
-
-      
-      // <div className="banner">
-      //   {
-      //     <Link
-      //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-      //   >
-      //     <img
-      //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
-      //       alt="ar"
-      //     />
-      //     </Link>
-      //     // <img src={img1} alt="ar" />
-      //   }
-      // </div>
+        // <div className="banner">
+        //   {
+        //     <Link
+        //     to={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //   >
+        //     <img
+        //       src={`https://menurating-back.levantsy.com/storage${adminDetails.cover}`}
+        //       alt="ar"
+        //     />
+        //     </Link>
+        //     // <img src={img1} alt="ar" />
+        //   }
+        // </div>
       }
-      <div className="bottom_section_temp4"  style={{flexDirection:  language === 'en' ? 'row' : 'row-reverse'}}>
+      <div
+        className="bottom_section_temp4"
+        style={{ flexDirection: language === "en" ? "row" : "row-reverse" }}
+      >
         <div
           className="left_section_temp5 mx-1"
-          style={{ background: `#${adminDetails.color &&adminDetails?.color.substring(10,16)}` }}
+          style={{
+            background: `#${
+              adminDetails.color && adminDetails?.color.substring(10, 16)
+            }`,
+          }}
         >
-        {
+          {
             // <img src={burger} alt="" />
             // <img src={pizza} alt="" />
             // <img src={french} alt="" />
             // <img src={soft} alt="" />
-            categories?.slice(0, isSmallDevice? 8 : 5).map((cat) => {
+            categories?.slice(0, isSmallDevice ? 8 : 5).map((cat) => {
               return (
                 <Link
                   to={`${
@@ -221,9 +233,17 @@ const SubCategoriesTemp5 = () => {
                   />
                 </Link>
               );
-            })}
-            <Link className="" style={{color: '#000'}} to={`/${username}/template/5/categories`}>{language === 'en' ? 'More' : 'المزيد'}</Link>
-          
+            })
+          }
+          {categories.length > 8 && (
+            <Link
+              className=""
+              style={{ color: "#FFF" }}
+              to={`/${username}/template/5/categories`}
+            >
+              {language === "en" ? "More" : "المزيد"}
+            </Link>
+          )}
         </div>
         <div className="offers_temp5_sub" style={{ flexWrap: "wrap" }}>
           {subCat?.map((sub) => {
@@ -244,14 +264,15 @@ const SubCategoriesTemp5 = () => {
           })}
         </div>
 
-        
-
         <Modal
           show={showModal}
           onHide={handleClose}
           className="searchModal p-0"
         >
-          <Form className="container-search" onSubmit={(e) => e.preventDefault()}>
+          <Form
+            className="container-search"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <input
               value={searchWord}
               onChange={onChangeSearch}
@@ -259,7 +280,7 @@ const SubCategoriesTemp5 = () => {
               lang="ar"
               placeholder=""
               className="form-search"
-              style={{textAlign: language === 'en' ? '' : 'right'}}
+              style={{ textAlign: language === "en" ? "" : "right" }}
             />
           </Form>
         </Modal>

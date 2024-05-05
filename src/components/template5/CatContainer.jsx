@@ -74,7 +74,7 @@ const CatContainer = () => {
   };
   return (
     <div className="d-flex flex-column align-items-center justify-content-center ">
-      <div className="offers_temp5">
+      <div className="offers_temp5"  style={{ flexDirection: language === "en" ? "row" : "row-reverse" }}>
           {categories?.map((cat) => {
             return (
               <Link to={`${cat.is_sub === 1 ? `/${username}/template/5/category/${cat.id}` : `/${username}/template/5/category/${cat.id}/sub-category/0` }`} key={cat.id}>
@@ -84,7 +84,7 @@ const CatContainer = () => {
                     alt="category"
                     className=''
                   />
-                  <p className=''>{cat.name}</p>
+                  <p className='text-white'>{cat.name}</p>
                 </div>
               </Link>
             );

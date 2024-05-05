@@ -17,7 +17,7 @@ import ellip from "../../assets/Ellipse 27.png";
 import home from "../../assets/icon _home_.png";
 import pizza from "../../assets/pizza 1 (2).png";
 import vector from "../../assets/Vector.png";
-import { IoMdArrowRoundBack  } from "react-icons/io";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -84,7 +84,7 @@ const Temp5Items = () => {
         console.error(error);
       }
     }
-    getItems();
+    // getItems();
   }, []);
 
   useEffect(() => {
@@ -235,73 +235,8 @@ const Temp5Items = () => {
             display: "inline-block",
           }}
         >
-          <IoMdArrowRoundBack  />
+          <IoMdArrowRoundBack />
         </Link>
-
-        {
-        // <div className="items_temp5 ">
-        //   {
-        //     //   items.map((item) => {
-        //     //   return (
-        //     //     <>
-        //     //       <div className="item_temp5" key={item.id} onClick={handleShow}>
-        //     //         <img
-        //     //           src={`https://menurating-back.levantsy.com/storage${item.item_images[0].image_url}`}
-        //     //           alt=""
-        //     //         />
-        //     //         <h6>{item.name}</h6>
-        //     //         <p>{item.description}...00000000.</p>
-        //     //       </div>
-        //     //       <Modal
-        //     //         show={showModal}
-        //     //         onHide={handleClose}
-        //     //         className="itemModal_temp4"
-        //     //       >
-        //     //         <div className="details_item">
-        //     //           <img
-        //     //             src={`https://menurating-back.levantsy.com/storage${item.item_images[0].image_url}`}
-        //     //             alt=""
-        //     //             className=""
-        //     //           />
-        //     //           <img
-        //     //             src={cancel}
-        //     //             alt=""
-        //     //             className="cancel_button"
-        //     //             onClick={handleClose}
-        //     //           />
-        //     //           <div className="details">
-        //     //             <div className="mt-3 d-flex justify-content-center align-items-center">
-        //     //               <h3 className="mr-3 my-0 text-capitalize">
-        //     //                 {item.name}
-        //     //               </h3>
-        //     //               <p className="text-dark m-0">
-        //     //                 {" "}
-        //     //                 {` price: ${item.price} S.P`}
-        //     //               </p>
-        //     //             </div>
-        //     //             <p className="text-center desc">
-        //     //               Lorem ipsum dolor sit amet consectetur adipisicing
-        //     //               elit., officia ullam! Illo.{item.description}
-        //     //             </p>
-        //     //           </div>
-        //     //         </div>
-        //     //       </Modal>
-        //     //     </>
-        //     //   );
-        //     // })}
-        //     // <div className="item_temp5" onClick={handleShow}>
-        //     //   <img src={pizza} alt="" />
-        //     //   <h6>name</h6>
-        //     //   <p>description</p>
-        //     // </div>
-        //     // <div className="item_temp5" onClick={handleShow}>
-        //     //   <img src={pizza} alt="" />
-        //     //   <h6>name</h6>
-        //     //   <p>description..</p>
-        //     // </div>
-        //   }
-        // </div>
-        }
 
         <Swiper
           effect={"coverflow"}
@@ -327,13 +262,13 @@ const Temp5Items = () => {
                       <img
                         src={`https://menurating-back.levantsy.com/storage${item.item_images[0].image_url}`}
                       />
-                      <h5 className="mt-2 text-center w-100 text-break">
+                      <h5 className="mt-3 text-center w-100 text-break">
                         {item.name}
                       </h5>
                       <p className="text-center w-100 text-break my-2">
                         {item.description}
                       </p>
-                      <h5 className="text-center font-weight-bold w-100 text-break my-2">
+                      <h5 className="text-center font-weight-bold w-100 text-break my-3">
                         {item.price} S.P
                       </h5>
                     </SwiperSlide>

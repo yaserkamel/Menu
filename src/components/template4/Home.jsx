@@ -19,6 +19,8 @@ import { LanguageContext } from "../../context/LanguageProvider";
 // import { FaWhatsapp } from "react-icons/fa"
 import WhatssappIcon from "../utility/WhatssappIcon";
 import Cover from "../template1/Cover";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { FaFacebookF } from "react-icons/fa";
 
 const Home = () => {
   const { adminDetails, updateUsername } = useContext(AdminContext);
@@ -101,7 +103,14 @@ const Home = () => {
                   target="_blank"
                   className="dorp_down_item"
                 >
-                  <img src={facebook} alt="" />
+                <FaFacebookF
+                color="white"
+                style={{
+                  width: "25px",
+                  height: "25px",
+                  borderRadius: "50%",
+                }}
+              />
                 </Dropdown.Item>
               )}
 
@@ -111,7 +120,15 @@ const Home = () => {
                   target="_blank"
                   className="dorp_down_item"
                 >
-                  <img src={insta} alt="" className="" />
+                <AiOutlineInstagram
+                className=""
+                color="white"
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                }}
+              />
                 </Dropdown.Item>
               )}
               <WhatssappIcon link={adminDetails.whatsapp_phone} />
@@ -185,33 +202,11 @@ const Home = () => {
         }
         <div className="right_section_temp4 w-100 ">
           <div className=" ">
-            {
-              <AdvTemp2 num={1} />
-              // <img src={rec1} alt="" />
-              // <img src={rec1} alt="" />
-              // <img src={rec1} alt="" />
-            }
+            <AdvTemp2 num={1} />
           </div>
           <div className="">
-            {
-              <CategoriesTemp4 username={username} />
-              // <div className="offer_temp4">
-              //   <img src={rec1} alt="" />
-              //   <p>Offer</p>
-              // </div>
-              // <div className="offer_temp4">
-              //   <img src={rec1} alt="" />
-              //   <p>Offer</p>
-              // </div>
-              // <div className="offer_temp4">
-              //   <img src={rec1} alt="" />
-              //   <p>Offer</p>
-              // </div>
-              // <div className="offer_temp4">
-              //   <img src={rec1} alt="" />
-              //   <p>Offer</p>
-              // </div>
-            }
+            <CategoriesTemp4 username={username} />
+
             <Modal
               show={showModal}
               onHide={handleClose}

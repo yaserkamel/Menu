@@ -76,7 +76,7 @@ const CategoriesTemp4 = ({username}) => {
                     alt="category"
                     className=''
                   />
-                  <p className='text-dark font-weight-bold text-capitalize'>{cat.name}</p>
+                  <p className='text-white  text-capitalize'>{cat.name}</p>
                 </div>
               </Link>
             );
